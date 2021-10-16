@@ -53,7 +53,7 @@ function UniversalTable({ head, body, dataOrder, onLimitChange, future=true }) {
           <FootLeft>
             <MySelectTitle>Показать на странице</MySelectTitle>
             <MySelect
-              // input_title="Ед. измерения"
+              input_title=""
               width="80px"
               height="36px"
               border="1px solid #4B5B7A"

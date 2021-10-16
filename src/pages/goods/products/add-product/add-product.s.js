@@ -39,6 +39,10 @@ export const GoodsStores = styled.div`
   align-items: center;
   & > div {
     display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-content: center;
+    align-items: center;
     gap: 7px;
   }
 `;

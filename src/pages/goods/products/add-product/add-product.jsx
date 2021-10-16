@@ -26,6 +26,7 @@ function AddProduct({ ...res }) {
           title="Наименование"
           border_color="#4B5B7A"
           font_size="12px"
+          title=""
           border_radius="4px"
         />
         <MyInput
@@ -38,6 +39,8 @@ function AddProduct({ ...res }) {
           border_color="#4B5B7A"
           font_size="12px"
           border_radius="4px"
+          title=""
+          type="number"
         />
       </AddContent>
 
@@ -52,6 +55,8 @@ function AddProduct({ ...res }) {
           border_color="#4B5B7A"
           font_size="12px"
           border_radius="4px"
+          title=""
+          type="number"
         />
         <MyInput
           width="225px"
@@ -63,18 +68,22 @@ function AddProduct({ ...res }) {
           border_color="#4B5B7A"
           font_size="12px"
           border_radius="4px"
+          title=""
         />
       </AddContent>
+
       <AddContent>
         <MySelect
           input_title="Ед. измерения"
           width="225px"
+          font_size="12px"
           height="36px"
           border="1px solid #4B5B7A"
           activ_border="1px solid #3F4558"
           border_radius="4px"
           color="#A4A6B3"
           InputLabel="Штук"
+          input_title=""
           onChange={(limit) => console.log(limit)}
           datas={["Qwerty", "Qwerty2", "Qwerty3"]}
         />
@@ -86,23 +95,28 @@ function AddProduct({ ...res }) {
           placeholder="Категория"
           title="Напитки"
           border_color="#4B5B7A"
+          title=""
           font_size="12px"
           border_radius="4px"
         />
       </AddContent>
+
       <Name>Наличие товара в магазинах</Name>
       <GoodsStores>
         <ProductText>Основной Склад</ProductText>
         <div>
           <MyInput
+            // error={phoneErr}
             width="72px"
             height="25px"
             color="#A4A6B3"
             activ="#3F4558"
-            placeholder=""
-            border_color="#4B5B7A"
-            font_size="12px"
             border_radius="4px"
+            title=""
+            font_size="12px"
+            text_align="right"
+            padding_right="4px"
+            type="number"
           />
           <MyButton
             bg="#68768F"
@@ -128,14 +142,17 @@ function AddProduct({ ...res }) {
         <ProductText>Склад г.Карши</ProductText>
         <div>
           <MyInput
+            // error={phoneErr}
             width="72px"
             height="25px"
             color="#A4A6B3"
             activ="#3F4558"
-            placeholder=""
-            border_color="#4B5B7A"
-            font_size="12px"
             border_radius="4px"
+            title=""
+            font_size="12px"
+            text_align="right"
+            padding_right="4px"
+            type="number"
           />
           <MyButton
             bg="#68768F"
@@ -172,6 +189,7 @@ function AddProduct({ ...res }) {
           placeholder="Категория"
           border_color="#4B5B7A"
           font_size="12px"
+          title=""
           border_radius="4px"
         />
       </AddContent>
@@ -186,6 +204,7 @@ function AddProduct({ ...res }) {
           border_color="#4B5B7A"
           font_size="12px"
           border_radius="4px"
+          title=""
         />
       </AddContent>
       <AddContent margin_bottom="0">

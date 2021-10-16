@@ -1,9 +1,3 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import { BrowserRouter } from 'react-router-dom';
-
 import { Component } from "react";
 
 class ErrorBoundary extends Component {
@@ -16,12 +10,10 @@ class ErrorBoundary extends Component {
     // Display fallback UI
     this.setState({ hasError: true });
     // You can also log the error to an error reporting service
-    const google = `https://google.com/search?q=${error.message}`;
-    const stackoverflow = `https://stackoverflow.com/search?q=${error.message}`;
-    const gW = new Window();
-    const sW = new Window();
-    gW.open(google);
-    sW.open(stackoverflow);
+    const google = `https://google.com/search?q=${error.message} reactjs error`;
+    const stackoverflow = `https://stackoverflow.com/search?q=${error.message} reactjs error`;
+    window.open(stackoverflow);
+    window.open(google);
   }
 
   render() {
@@ -33,11 +25,3 @@ class ErrorBoundary extends Component {
   }
 }
 export default ErrorBoundary;
-
-ReactDOM.render(
-  <BrowserRouter>
-    <App />
-  </BrowserRouter>,
-  document.getElementById('root')
-);
-

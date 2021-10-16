@@ -61,7 +61,7 @@ function Clients(props) {
           border_radius="4px"
         />
         <MyButton
-          text="Оплатить"
+          text="Новый клиент"
           font_size="12px"
           bg="#3982FF"
           color="#fff"
@@ -77,7 +77,7 @@ function Clients(props) {
         <MyDialog
           isOpen={open}
           onClose={() => setOpen(false)}
-          title="Оплатить"
+          title="Новый клиент"
           content={<ClientsDialog/>}
         />
       </SearchBlock>

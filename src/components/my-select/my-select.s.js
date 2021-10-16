@@ -21,6 +21,7 @@ export const MySelectContent = styled(FormControl)`
   }
   & .MuiOutlinedInput-notchedOutline {
     border: ${({ border }) => border};
+    border-color: rgba(0, 0, 0, 0.3);
   }
   & .MuiOutlinedInput-input {
     padding: 12px 16px;

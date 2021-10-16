@@ -13,13 +13,11 @@ function MyDialog({ isOpen, onClose, title, content }) {
     >
       <ModalTitle>
         {title}
-        <IconButton>
-          <Close onClick={onClose} />
+        <IconButton onClick={onClose}>
+          <Close />
         </IconButton>
       </ModalTitle>
-      <ModalBody>
-          {content}
-      </ModalBody>
+      <ModalBody>{content}</ModalBody>
     </Model>
   );
 }

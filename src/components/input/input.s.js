@@ -19,7 +19,7 @@ export const InputStyle = styled(TextField)`
   }
   && fieldset {
     border-radius: 8px;
-    border-color: #3f4558;
+    border-color: rgba(0, 0, 0, 0.3);
   }
   && .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
     border-width: 1px !important;

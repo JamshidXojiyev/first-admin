@@ -4,7 +4,7 @@ import { InLabel, InputBlock, InputLabel, InputStyle } from "./input.s";
 function MyInput({ title, ...res }) {
   return (
     <InputBlock>
-      <InLabel>{title == "" ? "" : title}</InLabel>
+      {title == "" ? "" : <InLabel>{title}</InLabel>}
       <InputStyle
         padding_right={res.padding_right}
         type={res.type || "search"}

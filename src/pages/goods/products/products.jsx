@@ -91,6 +91,7 @@ function Products(props) {
             activ="#3F4558"
             placeholder="Search"
             border_radius="4px"
+            title=""
           />
           <MyInput
             // error={phoneErr}
@@ -100,6 +101,7 @@ function Products(props) {
             activ="#3F4558"
             border_radius="4px"
             placeholder="Filter"
+            title=""
           />
         </div>
         <MyButton
