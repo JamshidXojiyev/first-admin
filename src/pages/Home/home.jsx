@@ -1,11 +1,12 @@
-import React, { useState } from "react";
-import { HomeContent } from "./home.s";
+import React from "react";
+import Kanban from "../../components/kanban/kanban";
 
-function Home() {
+function Home(props) {
   return (
-    <HomeContent>
+    <>
+      {/* <Kanban /> */}
       <h1>home page</h1>
-    </HomeContent>
+    </>
   );
 }
 

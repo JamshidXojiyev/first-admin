@@ -6,7 +6,7 @@ function MySelect({ onChange, ...res }) {
   const [pageLimit, setPageLimit] = useState("");
 
   useEffect(() => {
-    onChange(pageLimit);
+    onChange && onChange(pageLimit);
   }, [pageLimit]);
 
   return (

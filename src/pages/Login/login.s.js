@@ -36,7 +36,7 @@ export const BrandName = styled.h2`
   font-size: 18px;
   line-height: 22px;
   color: #bfc1ca;
-  margin-bottom: 34px;
+  margin-bottom: 34px!important;
 `;
 export const FirstInfo = styled.h1`
   font-family: "Inter", sans-serif;
@@ -45,7 +45,7 @@ export const FirstInfo = styled.h1`
   font-size: 24px;
   line-height: 29px;
   color: #252733;
-  margin-bottom: 12px;
+  margin-bottom: 12px!important;
 `;
 export const SecondInfo = styled.h3`
   font-family: "Inter", sans-serif;
@@ -54,7 +54,7 @@ export const SecondInfo = styled.h3`
   font-size: 14px;
   line-height: 17px;
   color: #9fa2b4;
-  margin-bottom: 50px;
+  margin-bottom: 50px!important;
 `;
 
 export const InputBlock = styled.div`

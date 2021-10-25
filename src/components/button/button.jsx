@@ -4,6 +4,7 @@ import { BtnCon } from "./button.s";
 function MyButton({ click, ...res }) {
   return (
     <BtnCon
+      type={res.type}
       bg={res.bg}
       color={res.color}
       width={res.width}
@@ -12,6 +13,7 @@ function MyButton({ click, ...res }) {
       onClick={click}
       border_radius={res.border_radius}
       padding={res.padding}
+      border={res.border}
       {...res}
     >
       {res.icon} {res.text}

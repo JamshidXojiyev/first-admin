@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { SuppliersContent } from "./suppliers.s";
 import { SearchBlock } from "../../goods/products/products.s";
 import { ReactComponent as SeeComponent } from "../../../assets/table-icon/more.svg";
@@ -9,77 +9,82 @@ import MyButton from "../../../components/button/button";
 import MyDialog from "../../../components/dialog/my-dialog";
 import UniversalTable from "../../../components/universal-table/universal-table";
 import AddProduct from "./add-product/add-product";
+import axios from "axios";
+import { useHistory } from "react-router";
 
 function Suppliers(props) {
-  const TableData = {
+  const [dialogData, setDialogData] = useState([]);
+  const [dialogOpen, setDialogOpen] = useState(false);
+  const [respons, setRespons] = useState([]);
+  const [TableData, setTableData] = useState({
     head: [
       <SeeComponent />,
       "Поставшик",
       "Называние фирма",
       "Договор №",
       "Торговая точка",
-      "Сотрудник",
+      "Агент",
       "Номер телефона",
-      "Статус",
     ],
-    body: [
-      {
-        SeeComponent,
-        vendor_code: "Кока-кола",
-        name: "OOO Coca Cola Bottlers",
-        quantity: "1A-659/1",
-        unit_of_measurement: "Чилонзор 21",
-        warehouse: "Бехзод Умаров",
-        price_receipt: "+998 (99) 436-46-15",
-        price: "Активный",
-      },
-      {
-        SeeComponent,
-        vendor_code: "Кока-кола",
-        name: "OOO Coca Cola Bottlers",
-        quantity: "1A-659/1",
-        unit_of_measurement: "Чилонзор 21",
-        warehouse: "Бехзод Умаров",
-        price_receipt: "+998 (99) 436-46-15",
-        price: "Активный",
-      },
-      {
-        SeeComponent,
-        vendor_code: "Кока-кола",
-        name: "OOO Coca Cola Bottlers",
-        quantity: "1A-659/1",
-        unit_of_measurement: "Чилонзор 21",
-        warehouse: "Бехзод Умаров",
-        price_receipt: "+998 (99) 436-46-15",
-        price: "Активный",
-      },
-      {
-        SeeComponent,
-        vendor_code: "Кока-кола",
-        name: "OOO Coca Cola Bottlers",
-        quantity: "1A-659/1",
-        unit_of_measurement: "Чилонзор 21",
-        warehouse: "Бехзод Умаров",
-        price_receipt: "+998 (99) 436-46-15",
-        price: "Активный",
-      },
-    ],
-  };
+    body: [],
+  });
   const dataOrder = [
-    () => (
-      <IconButton onClick={console.log("asd")}>
+    (item) => (
+      <IconButton
+        onClick={(e) => {
+          setDialogData(item);
+          setDialogOpen(true);
+        }}
+      >
+        {/* <IconButton> */}
         <SeeComponent />
       </IconButton>
     ),
-    "vendor_code",
-    "name",
-    "quantity",
-    "unit_of_measurement",
+    "full_name",
+    "contact_info",
+    "contract",
     "warehouse",
-    "price_receipt",
-    "price",
+    "agent",
+    "phone",
   ];
-  const [dialogOpen, setDialogOpen] = useState(false);
+
+  useEffect(() => {
+    axios
+      .get("http://89.223.71.112:8585/supplier", {
+        headers: {
+          Authorization: localStorage
+            .getItem("token")
+            .substring(1, localStorage.getItem("token").length - 1),
+          Warehouse: "2",
+        },
+      })
+      .then((res) => {
+        setRespons(res.data.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
+  useEffect(() => {
+    const tableTada = respons.map((d) => {
+      const tableTest = {
+        id: d.id,
+        SeeComponent,
+        full_name: d.full_name,
+        contact_info: d.contact_info,
+        contract: d.contract,
+        warehouse: "Чилонзор 21",
+        agent: d.agent,
+        phone: `+998 (${d.phone.substring(0, 2)}) ${d.phone.substring(
+          2,
+          5
+        )}-${d.phone.substring(5, 7)}-${d.phone.substring(7, 9)}`,
+      };
+      return tableTest;
+    });
+    setTableData({ ...TableData, body: tableTada });
+  }, [respons]);
 
   return (
     <SuppliersContent>
@@ -101,20 +106,23 @@ function Suppliers(props) {
           width=""
           height="38px"
           border_radius="4px"
-          padding="10px"
+          padding="12px 28px"
           click={() => {
             setDialogOpen(!dialogOpen);
           }}
         />
         <MyDialog
           isOpen={dialogOpen}
-          onClose={() => setDialogOpen(false)}
-          title="Свойства товара"
-            content={<AddProduct />}
-        //   content="asdasda"
+          onClose={() => {
+            setDialogOpen(false);
+            setDialogData([]);
+          }}
+          title="Новый поставшик"
+          content={<AddProduct data={dialogData} />}
         />
       </SearchBlock>
       <UniversalTable
+        future={false}
         head={TableData.head}
         body={TableData.body}
         dataOrder={dataOrder}

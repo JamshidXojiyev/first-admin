@@ -6,6 +6,10 @@ export const InputStyle = styled(TextField)`
   & input {
     text-align: ${({ text_align }) => text_align};
     padding-right: ${({ padding_right }) => padding_right};
+    color: ${({ color }) => color};
+    &:focus {
+      color: ${({ activ }) => activ};
+    }
   }
   & > div {
     background-color: ${({ bg_color }) => bg_color};
@@ -27,7 +31,6 @@ export const InputStyle = styled(TextField)`
 
   && .Mui-focused > fieldset {
     border-color: ${({ activ }) => activ} !important;
-    color: ${({ activ }) => activ} !important;
   }
   & fieldset {
     border-radius: ${({ border_radius }) => border_radius} !important;
@@ -37,8 +40,8 @@ export const InLabel = styled.h1`
   margin-bottom: 8px !important;
   font-family: "Inter", sans-serif;
   font-style: normal;
-  font-weight: bold;
-  font-size: 10px;
+  font-weight: 600;
+  font-size: 12px;
   line-height: 12px;
   color: #646464;
 `;

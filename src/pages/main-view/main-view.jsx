@@ -38,7 +38,7 @@ import Clients from "../Clients/сlients.jsx";
 import AddProduct from "../Warehouse/AcceptanceGoods/add-product/add-product.jsx";
 
 function MainView() {
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
   const datas = [
     {
       name: "Главная",

@@ -9,6 +9,7 @@ function MyInput({ title, ...res }) {
         padding_right={res.padding_right}
         type={res.type || "search"}
         text_align={res.text_align}
+        defaultValue={res.defaultValue}
         multiline={res.multiline}
         rows={res.rows}
         width={res.width}

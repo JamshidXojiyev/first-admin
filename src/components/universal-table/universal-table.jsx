@@ -1,5 +1,4 @@
 import { Pagination } from "@material-ui/lab";
-import React from "react";
 import {
   FootContent,
   FootLeft,
@@ -15,9 +14,9 @@ import {
 import { useState } from "react";
 import MySelect from "../my-select/my-select";
 
-function UniversalTable({ head, body, dataOrder, onLimitChange, future=true }) {
-
+function UniversalTable({ head, body, dataOrder, future = true }) {
   const [page, setPage] = useState(1);
+
   return (
     <>
       <TableContent cellSpacing="0" cellPadding="10">
@@ -61,7 +60,7 @@ function UniversalTable({ head, body, dataOrder, onLimitChange, future=true }) {
               border_radius="4px"
               color="#A4A6B3"
               InputLabel="5"
-              onChange={(limit) => console.log(limit)}
+              // onChange={(limit) => console.log(limit)}
               datas={[5, 10, 20, 30, 50]}
             />
           </FootLeft>

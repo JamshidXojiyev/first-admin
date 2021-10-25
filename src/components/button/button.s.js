@@ -26,6 +26,7 @@ import styled from "styled-components";
 
 export const BtnCon = styled(ButtonBase)`
   && {
+    border: ${({ border }) => border};
     background: ${({ bg }) => bg};
     color: ${({ color }) => color};
     font-family: "Inter", sans-serif;
@@ -38,7 +39,7 @@ export const BtnCon = styled(ButtonBase)`
     border-radius: ${({ border_radius }) => border_radius};
     padding: ${({ padding }) => padding};
     gap: 6px;
-    transition: all .3s ease-in-out;
+    transition: all 0.3s ease-in-out;
     display: flex;
     align-items: center;
     justify-content: center;
