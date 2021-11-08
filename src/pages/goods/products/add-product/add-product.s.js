@@ -1,3 +1,4 @@
+import ChipInput from "material-ui-chip-input";
 import styled from "styled-components";
 
 export const AddContent = styled.div`
@@ -63,4 +64,32 @@ export const LabelName = styled.div`
   font-size: 12px;
   line-height: 15px;
   color: #646464;
+`;
+export const MyChipInput = styled(ChipInput)`
+  width: 100%;
+  &.WAMuiChipInput-underline-18:after {
+    border-bottom: 2px solid #a4a6b3;
+  }
+  &.MuiFormLabel-root.Mui-focused {
+    color: #a4a6b3;
+  }
+`;
+export const CheckboxBlock = styled.div`
+  width: 250px;
+  & label {
+    width: 100%;
+    & svg {
+      color: #3982ff;
+      width: 20px;
+      height: 20px;
+    }
+    & span:last-child {
+      font-family: Inter;
+      font-style: normal;
+      font-weight: bold;
+      font-size: 14px;
+      line-height: 12px;
+      color: #646464;
+    }
+  }
 `;

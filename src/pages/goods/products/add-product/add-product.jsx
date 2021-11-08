@@ -1,24 +1,38 @@
-import React from "react";
+import { Checkbox, FormControlLabel } from "@material-ui/core";
+import React, { useState } from "react";
 import MyButton from "../../../../components/button/button";
 import MyInput from "../../../../components/input/input";
+import { ReactComponent as AddFileSVG } from "../../../../assets/add-file.svg";
 import MySelect from "../../../../components/my-select/my-select";
+import { AddFile, FileText } from "../../categories/add-product/add-product.s";
 import {
   AddContent,
+  CheckboxBlock,
   GoodsStores,
   LabelName,
   LabelPrices,
+  MyChipInput,
   Name,
   ProductText,
 } from "./add-product.s";
-import { ReactComponent as PlosSVG } from "../../../../assets/plosSVG.svg";
-import { ReactComponent as MinusSVG } from "../../../../assets/minusSVG.svg";
+import { useDropzone } from "react-dropzone";
 
 function AddProduct({ ...res }) {
+  const { getRootProps, getInputProps } = useDropzone();
+
+  const [state, setState] = React.useState({
+    checkedA: false,
+    checkedB: false,
+  });
+  const handleChange = (event) => {
+    setState({ ...state, [event.target.name]: event.target.checked });
+  };
+
   return (
     <>
       <AddContent>
         <MyInput
-          width="225px"
+          width="250px"
           height="36px"
           color="#A4A6B3"
           activ="#3F4558"
@@ -26,27 +40,26 @@ function AddProduct({ ...res }) {
           title="Наименование"
           border_color="#4B5B7A"
           font_size="12px"
-          title=""
           border_radius="4px"
         />
-        <MyInput
-          width="225px"
-          height="36px"
-          color="#A4A6B3"
-          activ="#3F4558"
-          placeholder="47865498498165"
-          title="Баркод"
-          border_color="#4B5B7A"
+        <MySelect
+          input_title="Категория"
+          width="250px"
           font_size="12px"
+          height="36px"
+          border="1px solid #4B5B7A"
+          activ_border="1px solid #3F4558"
           border_radius="4px"
-          title=""
-          type="number"
+          color="#A4A6B3"
+          InputLabel="Напитки"
+          onChange={(limit) => console.log(limit)}
+          datas={["Qwerty", "Qwerty2", "Qwerty3"]}
         />
       </AddContent>
 
       <AddContent>
         <MyInput
-          width="225px"
+          width="250px"
           height="36px"
           color="#A4A6B3"
           activ="#3F4558"
@@ -55,27 +68,27 @@ function AddProduct({ ...res }) {
           border_color="#4B5B7A"
           font_size="12px"
           border_radius="4px"
-          title=""
           type="number"
         />
-        <MyInput
-          width="225px"
-          height="36px"
-          color="#A4A6B3"
-          activ="#3F4558"
-          placeholder="Напитки"
-          title="Категория"
-          border_color="#4B5B7A"
+        <MySelect
+          input_title="nimadur"
+          width="250px"
           font_size="12px"
+          height="36px"
+          border="1px solid #4B5B7A"
+          activ_border="1px solid #3F4558"
           border_radius="4px"
-          title=""
+          color="#A4A6B3"
+          InputLabel="nimadur"
+          onChange={(limit) => console.log(limit)}
+          datas={["Qwerty", "Qwerty2", "Qwerty3"]}
         />
       </AddContent>
 
       <AddContent>
         <MySelect
           input_title="Ед. измерения"
-          width="225px"
+          width="250px"
           font_size="12px"
           height="36px"
           border="1px solid #4B5B7A"
@@ -83,140 +96,121 @@ function AddProduct({ ...res }) {
           border_radius="4px"
           color="#A4A6B3"
           InputLabel="Штук"
-          input_title=""
           onChange={(limit) => console.log(limit)}
           datas={["Qwerty", "Qwerty2", "Qwerty3"]}
         />
         <MyInput
-          width="225px"
+          width="250px"
           height="36px"
           color="#A4A6B3"
           activ="#3F4558"
-          placeholder="Категория"
-          title="Напитки"
+          placeholder=""
+          title="Описание"
           border_color="#4B5B7A"
-          title=""
           font_size="12px"
           border_radius="4px"
         />
       </AddContent>
 
-      <Name>Наличие товара в магазинах</Name>
-      <GoodsStores>
-        <ProductText>Основной Склад</ProductText>
-        <div>
-          <MyInput
-            // error={phoneErr}
-            width="72px"
-            height="25px"
-            color="#A4A6B3"
-            activ="#3F4558"
-            border_radius="4px"
-            title=""
-            font_size="12px"
-            text_align="right"
-            padding_right="4px"
-            type="number"
-          />
-          <MyButton
-            bg="#68768F"
-            color="#F9F9F9"
-            width="25px"
-            height="25px"
-            icon={<MinusSVG />}
-            border_radius="4px"
-            padding="10px"
-          />
-          <MyButton
-            bg="#68768F"
-            color="#F9F9F9"
-            width="25px"
-            height="25px"
-            icon={<PlosSVG />}
-            border_radius="4px"
-            padding="10px"
-          />
-        </div>
-      </GoodsStores>
-      <GoodsStores>
-        <ProductText>Склад г.Карши</ProductText>
-        <div>
-          <MyInput
-            // error={phoneErr}
-            width="72px"
-            height="25px"
-            color="#A4A6B3"
-            activ="#3F4558"
-            border_radius="4px"
-            title=""
-            font_size="12px"
-            text_align="right"
-            padding_right="4px"
-            type="number"
-          />
-          <MyButton
-            bg="#68768F"
-            color="#F9F9F9"
-            width="25px"
-            height="25px"
-            icon={<MinusSVG />}
-            border_radius="4px"
-            padding="10px"
-          />
-          <MyButton
-            bg="#68768F"
-            color="#F9F9F9"
-            width="25px"
-            height="25px"
-            icon={<PlosSVG />}
-            border_radius="4px"
-            padding="10px"
-          />
-        </div>
-      </GoodsStores>
-      <Name>Редактирование цен</Name>
       <AddContent>
-        <LabelPrices>Склад</LabelPrices>
-        <LabelPrices>Цена</LabelPrices>
+        <MyChipInput
+          label={"Баркод"}
+          onChange={(chips) => console.log(chips)}
+        />
       </AddContent>
+
       <AddContent>
-        <LabelName>Основной Склад</LabelName>
+        <CheckboxBlock>
+          <FormControlLabel
+            control={
+              <Checkbox
+                checked={state.checkedA}
+                onChange={handleChange}
+                name="checkedA"
+                color="primary"
+              />
+            }
+            label="Secondary"
+          />
+        </CheckboxBlock>
+
+        <CheckboxBlock>
+          <FormControlLabel
+            control={
+              <Checkbox
+                checked={state.checkedB}
+                onChange={handleChange}
+                name="checkedB"
+                color="primary"
+              />
+            }
+            label="Secondary"
+          />
+        </CheckboxBlock>
+      </AddContent>
+
+      <AddContent>
         <MyInput
-          width="225px"
+          width="160px"
           height="36px"
           color="#A4A6B3"
           activ="#3F4558"
-          placeholder="Категория"
+          placeholder="159756"
+          title="Артикул"
           border_color="#4B5B7A"
           font_size="12px"
-          title=""
           border_radius="4px"
+          type="number"
         />
-      </AddContent>
-      <AddContent>
-        <LabelName>Основной Склад</LabelName>
         <MyInput
-          width="225px"
+          width="160px"
           height="36px"
           color="#A4A6B3"
           activ="#3F4558"
-          placeholder="Категория"
+          placeholder="159756"
+          title="Артикул"
           border_color="#4B5B7A"
           font_size="12px"
           border_radius="4px"
-          title=""
+          type="number"
+        />
+        <MyInput
+          width="160px"
+          height="36px"
+          color="#A4A6B3"
+          activ="#3F4558"
+          placeholder="159756"
+          title="Артикул"
+          border_color="#4B5B7A"
+          font_size="12px"
+          border_radius="4px"
+          type="number"
         />
       </AddContent>
+
+      <AddContent>
+        <AddFile {...getRootProps()}>
+          <input {...getInputProps()} />
+          <AddFileSVG />
+          <FileText>
+            <h3>Перетащить изображение</h3>
+            <h3>
+              или просмотрите, чтобы
+              <span> выбрать файл</span>
+            </h3>
+          </FileText>
+        </AddFile>
+      </AddContent>
+
       <AddContent margin_bottom="0">
         <LabelName></LabelName>
         <MyButton
-          text="Создать товар"
+          text="Сохранить"
           font_size="12px"
           bg="#3982FF"
           color="#fff"
-          width=""
+          width="195px"
           height="38px"
-          // icon={<AddProductSVG />}
           border_radius="4px"
           padding="10px"
           // click={() => {

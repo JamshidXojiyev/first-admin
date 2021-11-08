@@ -16,6 +16,7 @@ export const Navigationbar = styled(Drawer)`
     height: calc(100vh - 64px);
     background-color: #464750;
     transition: all 0.5s ease-in-out;
+    overflow-y: overlay;
     overflow-x: hidden;
   }
 `;
@@ -58,11 +59,13 @@ export const Hamburger = styled(IconButton)`
 // body
 export const Body = styled.div`
   position: absolute;
+  top: 64px;
   bottom: 0;
   right: 0;
   width: calc(100% - ${({ width }) => width});
-  height: calc(100vh - 64px);
+  min-height: calc(100vh - 64px);
   transition: all 0.5s ease-in-out;
   padding: 20px 30px;
   background-color: #fff;
+  overflow-y: overlay;
 `;

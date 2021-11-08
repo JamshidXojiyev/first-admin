@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Body,
   Hamburger,
@@ -33,6 +33,7 @@ import AcceptanceGoods from "../Warehouse/AcceptanceGoods/acceptance-goods.jsx";
 import ReturnGoods from "../Warehouse/ReturnGoods/return-goods.jsx";
 import Suppliers from "../Warehouse/Suppliers/suppliers.jsx";
 import Employees from "../Employees/employees.jsx";
+import MyDialog from "../../components/dialog/my-dialog";
 import Settings from "../Settings/settings.jsx";
 import Clients from "../Clients/сlients.jsx";
 import AddProduct from "../Warehouse/AcceptanceGoods/add-product/add-product.jsx";
@@ -57,55 +58,55 @@ function MainView() {
       subItems: [
         {
           name: "Продукты",
-          link:"/goods/products",
+          link: "/goods/products",
         },
         {
           name: "Категории",
-          link:"/goods/categories",
+          link: "/goods/categories",
         },
       ],
     },
     {
       name: "Дебит Кредит",
       img: debitCreditIcon,
-      link:"/debit-credit",
+      link: "/debit-credit",
     },
     {
       name: "Склад",
       img: warehouseIcon,
-      link:"/warehouse/acceptance-goods",
+      link: "/warehouse/acceptance-goods",
       subItems: [
         {
           name: "Прием товаров",
-          link:"/warehouse/acceptance-goods",
+          link: "/warehouse/acceptance-goods",
         },
         {
           name: "Возврать товаров",
-          link:"/warehouse/return-goods"
+          link: "/warehouse/return-goods",
         },
         {
           name: "Поставшики",
-          link:"/warehouse/suppliers",
+          link: "/warehouse/suppliers",
         },
       ],
     },
     {
       name: "Клиенты",
       img: employeesIcon,
-      link:"/clients",
+      link: "/clients",
     },
     {
       name: "Сотрудники",
       img: employeesIcon,
-      link:"/employees",
+      link: "/employees",
     },
     {
       name: "Настройки",
       img: settingsIcon,
-      link:"/settings",
+      link: "/settings",
     },
   ];
-
+  const [dialogOpen, setDialogOpen] = useState(false);
   return (
     <HomeContent>
       <Siderbar>
@@ -251,24 +252,32 @@ function MainView() {
           </SidebarRightContent>
         </Toolbar>
       </Siderbar>
-      <Navigationbar variant="permanent" width={open ? "230px" : "54px"}>
+      <Navigationbar variant="permanent" width={open ? "260px" : "64px"}>
         <List>
           <ListItemBtn isOpen={open} datas={datas} />
         </List>
       </Navigationbar>
-      <Body width={open ? "230px" : "54px"}>
-        <Route path="/home" component={Home} />
-        <Route path="/reports" component={Reports} />
-        <Route path="/goods/products" component={Products} />
-        <Route path="/goods/categories" component={Categories} />
-        <Route path="/debit-credit" component={DebitCredit} />
-        <Route path="/warehouse/acceptance-goods" component={AcceptanceGoods} />
-        <Route path="/warehouse/acceptance-goods-product" component={AddProduct} />
-        <Route path="/warehouse/return-goods" component={ReturnGoods} />
-        <Route path="/warehouse/suppliers" component={Suppliers} />
-        <Route path="/clients" component={Clients} />
-        <Route path="/employees" component={Employees} />
-        <Route path="/settings" component={Settings} />
+      <Body width={open ? "260px" : "64px"}>
+        <div>
+          <Route path="/home" component={Home} />
+          <Route path="/reports" component={Reports} />
+          <Route path="/goods/products" component={Products} />
+          <Route path="/goods/categories" component={Categories} />
+          <Route path="/debit-credit" component={DebitCredit} />
+          <Route
+            path="/warehouse/acceptance-goods"
+            component={AcceptanceGoods}
+          />
+          <Route
+            path="/warehouse/acceptance-goods-product"
+            component={AddProduct}
+          />
+          <Route path="/warehouse/return-goods" component={ReturnGoods} />
+          <Route path="/warehouse/suppliers" component={Suppliers} />
+          <Route path="/clients" component={Clients} />
+          <Route path="/employees" component={Employees} />
+          <Route path="/settings" component={Settings} />
+        </div>
       </Body>
     </HomeContent>
   );

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import MyButton from "../../../components/button/button";
 import MyInput from "../../../components/input/input";
 import { ReactComponent as AddProductSVG } from "../../../assets/table-icon/add-product.svg";
@@ -16,12 +16,18 @@ import { CategorysData, SubcategoryData } from "./data";
 import Category from "./category/category";
 import MyDialog from "../../../components/dialog/my-dialog";
 import AddProduct from "./add-product/add-product";
+import axios from "axios";
 
 function Categories(props) {
   const [cat, setCat] = useState([]);
   const categorys = CategorysData;
   const [dialogOpen, setDialogOpen] = useState(false);
   const subcategory = SubcategoryData;
+
+  
+
+  // console.log("asd: ",   catDesc);
+
   return (
     <CategoryContent>
       <HomeContent>
@@ -56,7 +62,7 @@ function Categories(props) {
         />
       </HomeContent>
       <BodyContent>
-        <Category />
+        {/* <Category /> */}
         {/* {categorys.map((category, index) => (
           <MyCategory>
             <CategoryName expandIcon={<LeftCategory />}>

@@ -9,7 +9,7 @@ function Category({ categories = CategorysData }) {
     setSubcategorys(categories);
     console.log("data: ", subcategorys);
   };
-  console.log(categories);
+  // console.log(categories);
   return (
     <>
       {categories.map((category, index) => (

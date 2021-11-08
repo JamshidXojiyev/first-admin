@@ -16,6 +16,7 @@ function Suppliers(props) {
   const [dialogData, setDialogData] = useState([]);
   const [dialogOpen, setDialogOpen] = useState(false);
   const [respons, setRespons] = useState([]);
+  
   const [TableData, setTableData] = useState({
     head: [
       <SeeComponent />,
@@ -28,6 +29,7 @@ function Suppliers(props) {
     ],
     body: [],
   });
+  
   const dataOrder = [
     (item) => (
       <IconButton
@@ -64,7 +66,7 @@ function Suppliers(props) {
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+  }, [dialogOpen]);
 
   useEffect(() => {
     const tableTada = respons.map((d) => {
@@ -118,7 +120,12 @@ function Suppliers(props) {
             setDialogData([]);
           }}
           title="Новый поставшик"
-          content={<AddProduct data={dialogData} />}
+          content={
+            <AddProduct
+              data={dialogData}
+              onCloseDialog={(e) => setDialogOpen(false)}
+            />
+          }
         />
       </SearchBlock>
       <UniversalTable
